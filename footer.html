@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Flaming Footer</title>
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-rows: 1fr 10rem auto;
+      grid-template-areas: "main" "." "footer";
+      overflow-x: hidden;
+      background: #0F0F0F;
+      min-height: 100vh;
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    .RC-title{
+      font-family: 'Kaushan Script', cursive;
+    }
+    
+    .footer-btn{
+    background-color:#000000;
+    border:none;
+    }
+    
+    .footer-btn:hover{
+    background-color:#343434;
+    border:none;
+    }    
+    .footer-btn:active, .footer-btn:focus{
+    background-color:#343434;
+    border:none;
+    }        
+    
+    .footer-row div{
+    padding:10px 0 10px 0;
+    }
+
+    .flame-container {
+      z-index: 1;
+      --flame-background:rgb(159, 156, 156);
+      display: grid;
+      position: relative;
+      grid-area: footer;
+      min-height: 10rem;
+      width: 100%;
+    }
+
+    .flame-container .flame-flames {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1rem;
+      background: var(--flame-background);
+      filter: url("#flame");
+    }
+
+    .flame-container .flame-flames .flame-flame {
+      position: absolute;
+      left: var(--flame-position, 50%);
+      background: var(--flame-background);
+      border-radius: 100%;
+      animation: flame-flame-size var(--flame-time, 4s) ease-in infinite var(--flame-delay, 0s),
+        flame-flame-move var(--flame-time, 4s) ease-in infinite var(--flame-delay, 0s);
+      width: var(--flame-size, 4rem);
+      height: var(--flame-size, 4rem);
+    }
+
+    .flame-content {
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      padding-top:10vh;
+      background: var(--flame-background);
+      color:white;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .flame-content a {
+      color:white;
+      text-decoration: none;
+    }
+
+    .flame-content b {
+      color: white;
+    }
+
+    .flame-content p {
+      margin: 0;
+    }
+
+    .flame-content > div {
+      flex-basis: 100%;
+      flex-grow: 0;
+      margin-bottom: 1rem;
+    }
+
+    .flame-content .row {
+      margin: 0;
+    }
+
+    .flame-content .col {
+      padding: 0;
+    }
+
+    .flame-content .col:first-child {
+      padding-right: 1rem;
+    }
+
+    .flame-content .col:last-child {
+      padding-left: 1rem;
+    }
+
+    .flame-content .form-control {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes flame-flame-size {
+      0%,
+      75% {
+        width: var(--flame-size, 4rem);
+        height: var(--flame-size, 4rem);
+      }
+      100% {
+        width: 0rem;
+        height: 0rem;
+      }
+    }
+
+    @keyframes flame-flame-move {
+      0% {
+        bottom: -3rem;
+      }
+      100% {
+        bottom: var(--flame-distance, 10rem);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <footer class="flame-container">
+    <div class="flame-flames">
+      <!-- Flame flames will be dynamically generated here -->
+    </div>
+    <div class="flame-content">
+      <div class="container">
+        <div class="row footer-row">
+          <div class="col-md-4">
+            <h3 class="RC-title">RaLeCraft</h3>
+            <p>123 Main Street</p>
+            <p>City, State, ZIP</p>
+            <p>Email: info@yourcompany.com</p>
+            <p>Phone: +1 123-456-7890</p>
+            <p>Fax: +1 123-456-7891</p>
+          </div>
+          <div class="col-md-4">
+            <p>Follow us on:</p>
+            <p>
+              <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+              <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+              <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+              <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>Subscribe to our newsletter</p>
+            <div class="input-group">
+              <input type="email" class="form-control" id="placeholderInput" placeholder="">
+              <button class="btn btn-primary footer-btn" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+        <div class="row footer-row">
+          <div class="col-md-4">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Products</a>
+          </div>
+          <div class="col-md-4">
+            <p>Privacy Policy</p>
+            <p>Terms of Service</p>
+          </div>
+          <div class="col-md-4">
+            <p>&copy; 2023 RaLeCraft. All rights reserved.</p>
+            <p>Testimonials</p>
+          </div>
+        </div>
+        <div class="row footer-row">
+          <div class="col-md-12">
+            <button id="backToTopBtn" class="btn btn-primary footer-btn" style="display: none;">Back to Top</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <svg style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh;">
+    <defs>
+      <filter id="flame">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="5" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      var flameFlamesContainer = $('.flame-flames');
+
+      for (var i = 0; i < 128; i++) {
+        var flameSize = 2 + Math.random() * 4 + 'rem';
+        var flameDistance = 6 + Math.random() * 4 + 'rem';
+        var flamePosition = -5 + Math.random() * 110 + '%';
+        var flameTime = 2 + Math.random() * 2 + 's';
+        var flameDelay = -1 * (2 + Math.random() * 2) + 's';
+
+        var flameFlame = $('<div></div>').addClass('flame-flame').css('--flame-size', flameSize)
+          .css('--flame-distance', flameDistance).css('--flame-position', flamePosition)
+          .css('--flame-time', flameTime).css('--flame-delay', flameDelay);
+
+        flameFlamesContainer.append(flameFlame);
+      }
+
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $('#backToTopBtn').fadeIn();
+        } else {
+          $('#backToTopBtn').fadeOut();
+        }
+      });
+
+      $('#backToTopBtn').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+        return false;
+      });
+    });
+  </script>
+</body>
+
+</html>
