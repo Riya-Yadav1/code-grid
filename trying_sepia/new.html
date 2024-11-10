@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="new.css">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="content">
+        <div class="text">
+            <h1>
+                <span>sepia</span><br>
+                <span>is pictures</span><br>
+                <span class="photographer">collection</span>
+            </h1>
+        </div>
+        <div class="img_group">
+            <div class="img_group_inner">
+                <img src="./img/img1.jpg" alt="">
+                <img src="./img/img2.jpg" alt="">
+                <img src="./img/img3.jpg" alt="">
+                <img src="./img/img4.jpg" alt="">
+                <img src="./img/img5.jpg" alt="">
+                <img src="./img/img6.jpg" alt="">
+            </div>
+        </div>
+        <div class="bottom_text">
+            <h5>American Photographer, Filmaker and musician</h5>
+        </div>
+    </section>
+   
+    
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".text h1 span, .bottom_text h5").lettering();
+            
+            var tl=gsap.timeline();
+
+            tl.from(".text h1 span",{
+                x:-20,
+                duration:1,
+                opacity:0,
+                stagger:.1
+            })
+            
+            .from (".img_group img",{
+                x: 1100,
+                duration: 1,
+                opacity: 0,
+                stagger: .14
+
+           })
+            .to (".img_group img",{
+               x: 1100,
+               margin: '0 -140px 0',
+               duration: 1,
+               opacity: 1,
+               rotate:15,
+               stagger: .8
+
+           },"-=1.4")
+           .from (".bottom_text h5 span",{
+                x: -20,
+                duration: 1,
+                opacity: 0,
+                stagger: .07
+
+           })
+           setTimeout(function(){
+            $(".photographer").mouseover(function(){
+                gsap.to(".img_group img",{
+                    x: 100,
+                    margin: '0 10px 0',
+                    duration: 1,
+                    opacity: 1,
+                    rotate:0,
+                    stagger: .14
+                });
+
+            });
+             $(".photographer").mouseover(function(){
+                gsap.to(".img_group img",{
+                    x:1100,
+                    margin:'0 -140px 0',
+                    duration:1,
+                    opacity:1,
+                    rotate:15,
+                    stagger:.6
+                });
+             });
+            
+           }, 5000);
+        });
+    </script>
+
+
+
+</body>
+</html>
